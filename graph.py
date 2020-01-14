@@ -39,6 +39,10 @@ def graphdata(list):
                 data[9] += 1
         soldElements += 1
 
+    if data[9] == 0:
+        data.pop()
+        hierarchy.pop()
+
     # dataTextの整形
     dataText = ""
     for val in data:
@@ -66,7 +70,7 @@ def graphdata(list):
 
     if maxSoldNum >= 100:
         stepsize = 10
-    elif maxSoldNum < 10:
+    elif maxSoldNum < 30:
         stepsize = 1
 
     result = [dataText, labelsText, maxSoldNum, stepsize]
