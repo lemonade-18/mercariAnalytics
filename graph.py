@@ -1,55 +1,62 @@
+import math
+
+
 def graphdata(list):
 
-    data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    hierarchy = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    # スタージェスの公式
+    frequency = round(1 + math.log2(len(list)))
+
+    data = [0] * frequency
+    hierarchy = [0] * frequency
 
     price = [y[1] for y in list]
     sold = [x[2] for x in list]
 
-    # 最大値を求める
-    maxPrice = 0
-    soldElements = 0
+    # 最大値と最小値を求める
+    max_price = 0
+    min_price = 0
+    sold_elements = 0
     for money in price:
-        if sold[soldElements] == 'sold':
-            if maxPrice <= money:
-                maxPrice = money
-        soldElements += 1
+        if sold[sold_elements] == 'sold':
+            if max_price <= money:
+                max_price = money
+            if min_price >= money:
+                min_price = money
+        sold_elements += 1
 
-    # print(maxPrice)
+    # print(max_price)
     # print(sold)
 
     # 階層の数を求める
-    soldElements = 0
-    average = int(maxPrice/10000)
-    soldcount = 0
-    average = int((average+1)*1000)
+    sold_elements = 0
+    average = int((max_price - min_price)/frequency/10000)
+    sold_count = 0
+    average = int((average+1)*10000)
     # print(average)
-
-    for i in [1, 2, 3, 4, 5, 6, 7, 8, 9]:
-        hierarchy[i] = hierarchy[i-1]+average
+    print(frequency)
+    print(data)
+    print(hierarchy)
+    for i in range(frequency-1):
+        hierarchy[i+1] = hierarchy[i]+average
 
     for money in price:
-        if sold[soldElements] == 'sold':
-            soldcount += 1
+        if sold[sold_elements] == 'sold':
+            sold_count += 1
             dataElements = int(money / average)
             print(dataElements)
-            if dataElements < 10:
+            if dataElements < frequency:
                 data[dataElements] += 1
             else:
-                data[9] += 1
-        soldElements += 1
+                data[frequency - 1] += 1
+        sold_elements += 1
 
-    if data[9] == 0:
-        data.pop()
-        hierarchy.pop()
-
-    # dataTextの整形
-    dataText = ""
+    # data_textの整形
+    data_text = ""
     for val in data:
-        dataText += str(val)
-        dataText += ","
-    dataText = dataText[:-1]
-    # print(dataText)
+        data_text += str(val)
+        data_text += ","
+    data_text = data_text[:-1]
+    # print(data_text)
 
     # labelsTextの整形
     labelsText = ""
@@ -66,12 +73,12 @@ def graphdata(list):
     # maxsoldnum
     maxSoldNum = int((max(data)/10 + 1)) * 10
 
-    stepsize = 5
+    step_size = 5
 
     if maxSoldNum >= 100:
-        stepsize = 10
+        step_size = 10
     elif maxSoldNum < 30:
-        stepsize = 1
+        step_size = 1
 
-    result = [dataText, labelsText, maxSoldNum, stepsize]
+    result = [data_text, labelsText, maxSoldNum, step_size]
     return result
