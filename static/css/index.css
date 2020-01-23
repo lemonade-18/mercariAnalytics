@@ -170,6 +170,6 @@ input[type='checkbox']:checked {
 @media (max-width: 600px) {
   .input {
     width: 80%;
-    min-width: 375px;
+    min-width: 350px;
   }
 }
