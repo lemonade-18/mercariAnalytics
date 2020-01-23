@@ -1,87 +1,103 @@
+from statistics import mean, median, variance, stdev
 import math
 
 
 def graphdata(list):
+    # 価格リストを作成
+    prices = [row[1] for row in list]
+    # データの数
+    price_num = len(prices)
+    # データの標準偏差
+    price_sd = stdev(prices)
+    # Scottの公式
+    binwidth = 3.49 * price_sd/price_num ** (1/3)
+    binwidth = int(round(binwidth, -1))
+    print("binwidth", binwidth)
 
-    # リストを配列に代入
-    price = [y[1] for y in list]
-    sold = [x[2] for x in list]
+    # priceの最大値, 最小値を取得
+    price_min = min(prices)
+    price_max = max(prices)
+    print("price_min", price_min)
+    print("price_max", price_max)
 
-    # スタージェスの公式
-    frequency = round(1 + math.log2(len(list)))
+    # labelsの生成
+    labels = []
+    label = price_min
+    while label < price_max:
+        labels.append(label)
+        label += binwidth
+    print("labels: ", labels)
 
-    data = [0] * frequency
-    hierarchy = [0] * frequency
+    # dataの生成
+    data = []
+    cnt = 0
+    for label in labels:
+        for price in prices:
+            if price >= label and price < label+binwidth:
+                cnt += 1
+        data.append(cnt)
+        cnt = 0
+    print("data: ", data)
 
-    # 最大値と最小値を求める
-    max_price = 0
-    min_price = 99999999
-    sold_elements = 0
-    for money in price:
-        if sold[sold_elements] == 'sold':
-            if max_price <= money:
-                max_price = money
-            if min_price >= money:
-                min_price = money
-        sold_elements += 1
+    # labals及びdataの要素数を最大8件になるように切り出す
+    # 要素数と最大値の要素番号を取得
+    data_len = len(data)
+    data_max_index = data.index(max(data))
 
-    print("最大値", max_price)
-    print("最低値", min_price)
-    print(frequency)
-    # print(sold)
+    # 切り出しはじめと切り出し終わりを算出
+    index_a = 0
+    index_b = 0
+    if data_len > 7:
+        if data_len-4 < data_max_index:
+            index_b = data_len
+            index_a = data_len - 8
+        elif 3 > data_max_index:
+            index_a = 0
+            index_b = 7
+        else:
+            index_a = data_max_index - 4
+            index_b = data_max_index + 3
+    else:
+        index_b = data_len
+    print("index_a: ", index_a)
+    print("index_b: ", index_b)
 
-    # 階級幅
-    sold_elements = 0
-    average = int((max_price - min_price)/10000)
-    sold_count = 0
-    print(average)
-    average = int((average+1)*1000)
-    print(average)
+    # 切り出し
+    labels8 = []
+    data8 = []
+    while index_a < index_b:
+        labels8.append(labels[index_a])
+        data8.append(data[index_a])
+        index_a += 1
+    print("labels8: ", labels8)
+    print("data8: ", data8)
 
-    for i in range(frequency-1):
-        hierarchy[i+1] = hierarchy[i]+average
-
-    # 階級幅毎の件数
-    for money in price:
-        if sold[sold_elements] == 'sold':
-            sold_count += 1
-            data_elements = int(money / average)
-            if data_elements < frequency:
-                data[data_elements] += 1
-            else:
-                data[frequency - 1] += 1
-        sold_elements += 1
-
+    # 整形
     # data_textの整形
     data_text = ""
-    for val in data:
+    for val in data8:
         data_text += str(val)
         data_text += ","
     data_text = data_text[:-1]
-    # print(data_text)
+    print("data_text: ", data_text)
 
     # labels_textの整形
     labels_text = ""
-    for val in hierarchy:
+    for label in labels8:
         labels_text += "'"
         labels_text += "\xA5"
-        labels_text += str("{:,d}".format(val))
+        labels_text += str("{:,d}".format(label))
         labels_text += "~"
         labels_text += "'"
         labels_text += ","
     labels_text = labels_text[:-1]
-    # print(labels_text)
+    print("labels_text: ", labels_text)
 
-    # max_sold_num
-    max_sold_num = int((max(data)/10 + 1)) * 10
+    # 縦軸の最大値を求める
+    suggested_max = int((max(data8)/10 + 1)) * 10
 
-    # ステップ数
-    step_size = 5
+    # 刻み幅の設定
+    step_size = suggested_max / (suggested_max / 10)
 
-    if max_sold_num >= 100:
-        step_size = 10
-    elif max_sold_num < 30:
-        step_size = 1
-
-    result = [data_text, labels_text, max_sold_num, step_size]
+    result = [data_text, labels_text, suggested_max, step_size]
     return result
