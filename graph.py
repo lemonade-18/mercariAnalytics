@@ -47,9 +47,9 @@ def graphdata(list):
     # 切り出しはじめと切り出し終わりを算出
     index_a = 0
     index_b = 0
-    if data_len > 7:
+    if data_len > 8:
         if data_len-4 < data_max_index:
-            index_b = data_len
+            index_b = data_len-1
             index_a = data_len - 8
         elif 3 > data_max_index:
             index_a = 0
@@ -58,14 +58,14 @@ def graphdata(list):
             index_a = data_max_index - 4
             index_b = data_max_index + 3
     else:
-        index_b = data_len
+        index_b = data_len-1
     print("index_a: ", index_a)
     print("index_b: ", index_b)
 
     # 切り出し
     labels8 = []
     data8 = []
-    while index_a < index_b:
+    while index_a <= index_b:
         labels8.append(labels[index_a])
         data8.append(data[index_a])
         index_a += 1
