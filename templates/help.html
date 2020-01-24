@@ -1,0 +1,26 @@
+<!--レイアウトの呼び出し-->
+{% extends "layout.html" %}
+
+<!-- 個別のhtml -->
+{% block content %}
+<!-- 個別css読み込み -->
+<link href="/static/css/help.css" rel="stylesheet" media="screen" />
+<nav class="navbar navbar-default">
+  <a href="/"><img class="logo" src="\static\picture\logo.png" alt="logo"/></a>
+</nav>
+<!--コンテナ -->
+<div class="container">
+  <div class="flame">
+    <h1>mercari analyticsとは</h1>
+    <p>mercai analyticsとは、商品が売れた相場をグラフ化し、どれほどの価格設定が良く売れるのかをス調べるアプリです。<br>
+      参考までにご利用ください。</p>
+    <h1>mercari analyticsの使い方</h1>
+    <ol>
+      <li>商品名の欄に検索したい商品名を入力します。（必須）</li>
+      <li>カテゴリを選択します。（必須）</li>
+      <li>【さらに絞り込む】の右にある【+】を選択することで、商品の状態を選択することができます。（任意）（複数選択可）</li>
+      <li>OKをクリックします。</li>
+    </ol>
+  </div>
+  {% endblock %}
+</div>
