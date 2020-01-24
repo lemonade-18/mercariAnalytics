@@ -1,0 +1,55 @@
+/* BODY STYLES
+------------------------------------ */
+body {
+    background-color: rgb(245, 245, 245);
+    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  }
+  
+/* NAVBAR STYLES
+------------------------------------ */
+.navbar-default {
+    border-top: 1px solid transparent;
+    border: 0px;
+    border-radius: 0px;
+    background-color: #ffffff;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
+    margin-bottom: 30px;
+  }
+
+  /* LOGO STYLES
+------------------------------------ */
+.logo {
+    margin: 12px;
+    float: left;
+    display: block;
+    width: 24%;
+    max-width: 175px;
+  }
+
+  /* CONTAINER STYLES
+------------------------------------ */
+.container {
+    max-width: 800px;
+    margin: 0px auto;
+    border-top: 0px solid transparent;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  /*title部*/
+  .container-title {
+  }
+
+  .search-result-description {
+    margin: 16px 4% 24px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* RESPONSIVE STYLES
+------------------------------------ */
+@media (max-width: 820px) {
+    .container {
+      max-width: 92%;
+    }
+  }

@@ -1,0 +1,17 @@
+<!--レイアウトの呼び出し-->
+{% extends "layout.html" %}
+
+<!-- 個別のhtml -->
+{% block content %}
+<!-- 個別css読み込み -->
+<link href="/static/css/nonitem.css" rel="stylesheet" media="screen" />
+<!-- navbar -->
+<nav class="navbar navbar-default">
+    <a href="/"><img class="logo" src="\static\picture\logo.png" alt="logo"/></a>
+</nav>
+<!--コンテナ -->
+<div class="container">
+    <p class="container-title"><strong>{{keyword}}</strong>の分析結果</p>
+    <p　class="search-result-description">該当の商品が見つかりません。検索条件を変えて、再度お試しください。</p>
+    {% endblock %}
+</div>>
