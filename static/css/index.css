@@ -135,10 +135,10 @@ form.form1 {
   opacity: 1;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
 }
 
-input[type='checkbox']:checked {
+input[type="checkbox"]:checked {
 }
 
 .submit {
@@ -171,5 +171,6 @@ input[type='checkbox']:checked {
   .input {
     width: 80%;
     min-width: 350px;
+    margin: 5em auto;
   }
 }
