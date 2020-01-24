@@ -99,5 +99,5 @@ def graphdata(list):
     # 刻み幅の設定
     step_size = suggested_max / (suggested_max / 10)
 
-    result = [data_text, labels_text, suggested_max, step_size]
+    result = [data_text, labels_text, suggested_max, step_size, data8, labels8]
     return result
