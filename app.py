@@ -85,9 +85,9 @@ def search():
     data = graph_data[4]
     labels = graph_data[5]
 
-    # 購入件数の多い価格帯
-    popular_price = labels[data.index(max(data))]
-    print("popular_price: ", popular_price)
+    # 購入件数の多い価格帯のインデックス
+    popular_price_index = data.index(max(data))
+    print("popular_price: ", popular_price_index)
 
     # ビン幅の計算
     binwidth = labels[1] - labels[0] 
@@ -104,7 +104,7 @@ def search():
                            graph_labels=labels_text,
                            graph_max=suggested_max,
                            graph_stepsize=step_size,
-                           popular_price=popular_price)
+                           popular_price_index=popular_price_index)
 
 
 if __name__ == "__main__":

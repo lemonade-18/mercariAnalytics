@@ -43,8 +43,7 @@ body {
 }
 
 /*title部*/
-.container-title {
-}
+.container-title {}
 
 /* GRAPH STYLES
 ------------------------------------ */
@@ -192,19 +191,26 @@ body {
   margin-left: 10px;
 }
 
+.graph-label-7 {
+  display: none
+}
+
 /* Tab Area
 ------------------------------------ */
 
 .tab_wrap {
   margin: 10px auto;
 }
+
 input[type="radio"] {
   display: none;
 }
+
 .tab_area {
   font-size: 0;
   margin: 0px top;
 }
+
 .tab_area label {
   width: 50%;
   display: inline-block;
@@ -217,45 +223,54 @@ input[type="radio"] {
   cursor: pointer;
   transition: ease 0.2s opacity;
 }
+
 .tab_area label:hover {
   opacity: 0.5;
 }
+
 .panel_area {
   background: #fff;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
 .tab_panel {
   width: 100%;
   padding: 4px 0;
   display: none;
   margin-bottom: 60px;
 }
+
 .tab_panel p {
   font-size: 14px;
   letter-spacing: 1px;
   text-align: center;
 }
 
-#tab1:checked ~ .tab_area .tab1_label {
+#tab1:checked~.tab_area .tab1_label {
   background: #fff;
   color: #000;
 }
-#tab1:checked ~ .panel_area #panel1 {
+
+#tab1:checked~.panel_area #panel1 {
   display: block;
 }
-#tab2:checked ~ .tab_area .tab2_label {
+
+#tab2:checked~.tab_area .tab2_label {
   background: #fff;
   color: #000;
 }
-#tab2:checked ~ .panel_area #panel2 {
+
+#tab2:checked~.panel_area #panel2 {
   display: block;
 }
-#tab3:checked ~ .tab_area .tab3_label {
+
+#tab3:checked~.tab_area .tab3_label {
   background: #fff;
   color: #000;
 }
-#tab3:checked ~ .panel_area #panel3 {
+
+#tab3:checked~.panel_area #panel3 {
   display: block;
 }
 
@@ -265,18 +280,22 @@ input[type="radio"] {
   .container {
     max-width: 92%;
   }
+
   #myBarChart {
     padding: 2px;
   }
+
   .row {
     margin-right: -2px;
     margin-left: -2px;
   }
+
   .itemcol {
     padding-right: 2px;
     padding-left: 2px;
     padding-bottom: 10px;
   }
+
   .sold-char {
     margin-left: 2px;
   }
