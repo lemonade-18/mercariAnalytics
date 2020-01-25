@@ -1,0 +1,16 @@
+<!--レイアウトの呼び出し-->
+{% extends "layout.html" %}
+
+<!-- 個別のhtml -->
+{% block content %}
+<!-- 個別css読み込み -->
+<link href="/static/css/exception.css" rel="stylesheet" media="screen" />
+<!-- navbar -->
+<nav class="navbar navbar-default">
+    <a href="/"><img class="logo" src="\static\picture\logo.png" alt="logo" /></a>
+</nav>
+<!--コンテナ -->
+<div class="container">
+    <p　class="description">処理中にエラーが発生しました。管理者に問い合わせてください。</p>
+    {% endblock %}
+</div>

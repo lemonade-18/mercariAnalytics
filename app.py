@@ -84,13 +84,11 @@ def search():
     step_size = graph_data[3]
     data = graph_data[4]
     labels = graph_data[5]
+    binwidth = graph_data[6]
 
     # 購入件数の多い価格帯のインデックス
     popular_price_index = data.index(max(data))
     print("popular_price: ", popular_price_index)
-
-    # ビン幅の計算
-    binwidth = labels[1] - labels[0] 
 
     # 分析結果画面表示
     return render_template('graph.html',
@@ -105,6 +103,11 @@ def search():
                            graph_max=suggested_max,
                            graph_stepsize=step_size,
                            popular_price_index=popular_price_index)
+
+# ユーザー定義例外のスーパークラスのハンドラを登録しておく
+@app.errorhandler(Exception)
+def error_handler(ex):
+    return render_template("nonitem.html")
 
 
 if __name__ == "__main__":
