@@ -100,6 +100,7 @@ form.form1 {
 
 #grand-child-area {
   margin: 0px auto;
+  margin-top: -7px;
   width: 76%;
 }
 
@@ -130,16 +131,14 @@ form.form1 {
   transition: all 0.5s;
 }
 
-#display-switch:checked + #conditionlist-wrap {
+#display-switch:checked+#conditionlist-wrap {
   height: 175px;
   opacity: 1;
 }
 
-input[type="checkbox"] {
-}
+input[type="checkbox"] {}
 
-input[type="checkbox"]:checked {
-}
+input[type="checkbox"]:checked {}
 
 .submit {
   cursor: pointer;
@@ -159,7 +158,16 @@ input[type="checkbox"]:checked {
   margin: 0 35%;
 }
 
-#form1 > a {
+#help-button {
+  display: inline-block;
+  text-align: right;
+  margin-bottom: -27px;
+  padding-right: 15px;
+  color: #337ab7;
+  text-decoration: none;
+}
+
+#form1>a {
   text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
   color: #ffffff;
   text-decoration: none;
@@ -170,7 +178,7 @@ input[type="checkbox"]:checked {
 @media (max-width: 600px) {
   .input {
     width: 80%;
-    min-width: 350px;
+    min-width: 340px;
     margin: 5em auto;
   }
 }
