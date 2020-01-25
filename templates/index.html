@@ -12,11 +12,10 @@
   <img class="input-logo" src="static\picture\logo.png" alt="logo" />
   <p class="site-title">メルカリの価格相場分析アプリ</p>
   <form class="form1" action="/search/" method="GET" , id="form1">
-    <input id="keyword" class="search-default" type="search" name="keyword" placeholder="商品名" />
+    <input id="keyword" class="search-default" type="search" name="keyword" placeholder="商品名" required>
     {% block category %}
     <!-- カテゴリ選択欄 -->
     {% endblock %}
-
     <a class="submit" align="center" id="OK">OK</a>
   </form>
 </div>
