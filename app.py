@@ -107,7 +107,7 @@ def search():
 # ユーザー定義例外のスーパークラスのハンドラを登録しておく
 @app.errorhandler(Exception)
 def error_handler(ex):
-    return render_template("nonitem.html")
+    return render_template("exception.html")
 
 
 if __name__ == "__main__":
