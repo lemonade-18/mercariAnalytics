@@ -1,5 +1,4 @@
-from statistics import mean, median, variance, stdev
-import math
+from statistics import stdev
 
 
 def graphdata(list):
