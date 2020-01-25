@@ -37,7 +37,10 @@ body {
 }
 
 /*title部*/
-.container-title {}
+.container-title {
+    font-weight: bold;
+    font-size: 16px;
+}
 
 .description {
     margin: 16px 4% 24px;
