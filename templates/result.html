@@ -30,10 +30,9 @@
     </p>
   </div>
   <div class="price-button">
-    <form>
-      <input type="button" value="表示" onclick="hyoji1(0)">
-      <input type="button" value="非表示" onclick="hyoji1(1)">
-    </form>
+    {% for label in labels %}
+    <label class="button" onclick='display({{loop.index0}})'><span class="price">{{ label }}</span></label>
+    {% endfor %}
   </div>
   <div class="tab_wrap">
     <input checked id="tab1" name="tab_btn" type="radio" />
@@ -109,10 +108,29 @@
       </div>
       <!-- 価格帯別に商品一覧の表示を切り替えるスクリプト -->
       <script>
-        function initializeDisplay() {
-          document.getElementsByClassName("{{popular_price_index}}").style.display = "block";
+        function display(displayLabelIndex) {
+          for (var index = 0; index < 8; index++) {
+            if (index != displayLabelIndex) {
+              var hiddenLabel = "graph-label-" + index;
+              hiddenLabels = document.getElementsByClassName(hiddenLabel)
+              for (var cnt = 0; cnt < hiddenLabels.length; cnt++) {
+                hiddenLabels[cnt].style.display = "none";
+              }
+            }else{
+              var displayLabel = "graph-label-" + index;
+              displayLabels = document.getElementsByClassName(displayLabel)
+              for (var cnt = 0; cnt < displayLabels.length; cnt++) {
+                displayLabels[cnt].style.display = "block";
+              }
+            }
+          }
         }
-        window.onload = initializeDisplay;
+        //初期表示
+        document.addEventListener('DOMContentLoaded', display({{popular_price_index|safe}}));
+        //切替
+        document.getElementById("text-button").onclick = function () {
+          document.getElementById("text").innerHTML = "クリックされた！";
+        };
       </script>
       <!-- 価格の表示形式を設定するスクリプト -->
       <script>
