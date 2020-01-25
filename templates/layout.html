@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-    <link rel="icon" href="/static/picture/favicon.png" />
-    <script src="/static/js/jquery-3.1.1.min.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
 
-  <body>
-    <!--CSSの呼び出し-->
-    <link href="/static/css/bootstrap.css" rel="stylesheet" />
+<head>
+  <title>{{title}}</title>
+  <link rel="icon" href="/static/picture/favicon.png" />
+  <script src="/static/js/jquery-3.1.1.min.js"></script>
+  <script src="/static/js/bootstrap.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
 
-    {% block content %}
-    <!-- ここに個別のhtmlが入る -->
-    {% endblock %}
-  </body>
+<body>
+  <!--CSSの呼び出し-->
+  <link href="/static/css/bootstrap.css" rel="stylesheet" />
+
+  {% block content %}
+  <!-- ここに個別のhtmlが入る -->
+  {% endblock %}
+</body>
+
 </html>
