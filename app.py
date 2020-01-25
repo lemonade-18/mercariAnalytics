@@ -89,12 +89,17 @@ def search():
     popular_price = labels[data.index(max(data))]
     print("popular_price: ", popular_price)
 
+    # ビン幅の計算
+    binwidth = labels[1] - labels[0] 
+
     # 分析結果画面表示
     return render_template('graph.html',
                            title=keyword+"の分析結果",
                            keyword=keyword,
                            sold_itemlist=sold_itemlist,
                            unsold_itemlist=unsold_itemlist,
+                           labels=labels,
+                           binwidth=binwidth,
                            graph_data=data_text,
                            graph_labels=labels_text,
                            graph_max=suggested_max,

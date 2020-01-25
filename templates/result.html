@@ -3,110 +3,128 @@
 
 <!-- 個別のhtml -->
 {% block content %}
-<!-- 個別css読み込み -->
-<link href="/static/css/result.css" rel="stylesheet" media="screen" />
-<!-- navbar -->
-<nav class="navbar navbar-default">
-  <a href="/"><img class="logo" src="\static\picture\logo.png" alt="logo"/></a>
-</nav>
-<!--コンテナ -->
-<div class="container">
-  {% if sold_itemlist|length > 120 %}
-  <p class="container-notes">
-    直近{{sold_itemlist|length}}件の売り切れ商品から
-  </p>
-  {% else %}
-  <p class="container-notes">{{sold_itemlist|length}}件の売り切れ商品</p>
-  {% endif %}
-  <p class="container-title"><strong>{{keyword}}</strong>の分析結果</p>
-  <!--グラフエリア-->
-  {% block graph %} {% endblock %}
-  <!--結果リストのヘッダー部分-->
-  <div class="result-header">
-    <p>
-      売り切れ件数の多い価格帯：<span class="price">{{popular_price}}</span>
-      ～
-    </p>
-  </div>
-  <div class="tab_wrap">
-    <input id="tab1" type="radio" name="tab_btn" checked />
-    <input id="tab2" type="radio" name="tab_btn" />
-    <input id="tab3" type="radio" name="tab_btn" />
+    <!-- 個別css読み込み -->
+    <link
+    href="/static/css/result.css" media="screen" rel="stylesheet"/>
+    <!-- navbar -->
+    <nav class="navbar navbar-default">
+        <a href="/"><img alt="logo" class="logo" src="\static\picture\logo.png"/></a>
+    </nav>
+    <!--コンテナ -->
+    <div class="container">
+        {% if sold_itemlist|length > 120 %}
+            <p class="container-notes">
+                直近{{ sold_itemlist|length }}件の売り切れ商品から
+            </p>
+        {% else %}
+            <p class="container-notes">{{ sold_itemlist|length }}件の売り切れ商品</p>
+        {% endif %}
+        <p class="container-title">
+            <strong>{{ keyword }}</strong>の分析結果</p>
+        <!--グラフエリア-->
+        {% block graph %}{% endblock %}
+        <!--結果リストのヘッダー部分-->
+        <div class="result-header">
+            <p>
+                売り切れ件数の多い価格帯：<span class="price">{{ popular_price }}</span>
+                ～
+            </p>
+        </div>
+        <div class="price-button"></div>
+        <div class="tab_wrap">
+            <input checked id="tab1" name="tab_btn" type="radio"/>
+            <input id="tab2" name="tab_btn" type="radio"/>
+            <input id="tab3" name="tab_btn" type="radio"/>
 
-    <div class="tab_area">
-      <label class="tab1_label" for="tab1">相場を調べる</label>
-      <label class="tab2_label" for="tab2">買い物をする</label>
-    </div>
-    <div class="panel_area">
-      <div id="panel1" class="tab_panel">
-        <!--売り切れ商品リスト-->
-        <div class="resul-list">
-          <div class="row">
-            {% for name, price, status, url, photo in sold_itemlist %} {% if
-            price >= popular_price %}
-            <div class="item">
-              <a href="{{url}}" target="_blank">
-                <div
-                  class="itemcol col-xs-4 col-sm-4 col-md-3 col-lg-3 col-xl-3"
-                >
-                  <img style="background-image: url({{photo}});" />
-                  <figcaption>
-                    <div class="item-sold-out-badge">
-                      <div class="sold-char">SOLD</div>
-                    </div>
-                  </figcaption>
-                  <div class="items-box-num">
-                    <div class="item-price">
-                      <span class="price">{{price}}</span>
-                    </div>
-                  </div>
-                  <!-- <span class="itemname">{{name}}</span> -->
-                </div>
-              </a>
+            <div class="tab_area">
+                <label class="tab1_label" for="tab1">相場を調べる</label>
+                <label class="tab2_label" for="tab2">買い物をする</label>
             </div>
-            {% endif %} {% endfor %}
-          </div>
-        </div>
-      </div>
-      <div id="panel2" class="tab_panel">
-        <!--販売中商品リスト-->
-        <div class="resul-list">
-          <div class="row">
-            {% for name, price, status, url, photo in unsold_itemlist %} {% if
-            price >= popular_price %}
-            <div class="item">
-              <a href="{{url}}" target="_blank">
+            <div class="panel_area">
                 <div
-                  class="itemcol col-xs-4 col-sm-4 col-md-3 col-lg-3 col-xl-3"
-                >
-                  <img style="background-image: url({{photo}});" />
-                  <div class="items-box-num">
-                    <div class="item-price">
-                      <span class="price">{{price}}</span>
+                    class="tab_panel" id="panel1">
+                    <!--売り切れ商品リスト-->
+                    <div class="resul-list">
+                        <div class="row">
+                            {% for label in labels %}
+                                {% set label_index = loop.index0 %}
+                                {% for name, price, status, url, photo in sold_itemlist %}
+                                    {% if price >= label and price < label+binwidth %}
+                                        <div class="graph-label-{{ label_index }}">
+                                            <div class="item">
+                                                <a href="{{ url }}" target="_blank">
+                                                    <div class="itemcol col-xs-4 col-sm-4 col-md-3 col-lg-3 col-xl-3">
+                                                        <img style="background-image: url({{ photo }});"/>
+                                                        <figcaption>
+                                                            <div class="item-sold-out-badge">
+                                                                <div class="sold-char">SOLD</div>
+                                                            </div>
+                                                        </figcaption>
+                                                        <div class="items-box-num">
+                                                            <div class="item-price">
+                                                                <span class="price">{{ price }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <span class="itemname">{{name}}</span> -->
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
-                  </div>
-                  <!-- <span class="itemname">{{name}}</span> -->
                 </div>
-              </a>
-            </div>
-            {% endif %} {% endfor %}
-          </div>
+                <div
+                    class="tab_panel" id="panel2">
+                    <!--出品中商品リスト-->
+                    <div class="resul-list">
+                        <div class="row">
+                            {% for label in labels %}
+                                {% set label_index = loop.index0 %}
+                                {% for name, price, status, url, photo in unsold_itemlist %}
+                                    {% if price >= label and price < label+binwidth %}
+                                        <div class="graph-label-{{ label_index }}">
+                                            <div class="item">
+                                                <a href="{{ url }}" target="_blank">
+                                                    <div class="itemcol col-xs-4 col-sm-4 col-md-3 col-lg-3 col-xl-3">
+                                                        <img style="background-image: url({{ photo }});"/>
+                                                        <div class="items-box-num">
+                                                            <div class="item-price">
+                                                                <span class="price">{{ price }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <span class="itemname">{{name}}</span> -->
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function addFigure(str) {
+                        var num = new String(str).replace(/,/g, '')
+                        while (num != (num = num.replace(/^(-?\d+)(\d{3})/, '$1,$2'))) 
+                            var str = num
+
+
+                        
+
+
+                        return '&yen' + str
+                    }
+                    $(function () {
+                        $('.price').each(function () {
+                            $(this).html(addFigure($(this).html()))
+                        })
+                    })
+                </script>
+            {% endblock %}
         </div>
-      </div>
-      <script>
-        function addFigure(str) {
-          var num = new String(str).replace(/,/g, "");
-          while (num != (num = num.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
-          var str = "&yen" + num;
-          return str;
-        }
-        $(function() {
-          $(".price").each(function() {
-            $(this).html(addFigure($(this).html()));
-          });
-        });
-      </script>
-      {% endblock %}
     </div>
-  </div>
 </div>
