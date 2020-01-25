@@ -6,8 +6,11 @@ def graphdata(list):
     prices = [row[1] for row in list]
     # データの数
     price_num = len(prices)
-    # データの標準偏差
+    # データの標準偏差を算出
+    if price_num == 1:
+        prices.append(0)
     price_sd = stdev(prices)
+
     # Scottの公式
     binwidth = 3.49 * price_sd/price_num ** (1/3)
     binwidth = int(round(binwidth, -1))
@@ -98,5 +101,6 @@ def graphdata(list):
     # 刻み幅の設定
     step_size = suggested_max / (suggested_max / 10)
 
-    result = [data_text, labels_text, suggested_max, step_size, data8, labels8]
+    result = [data_text, labels_text, suggested_max,
+              step_size, data8, labels8, binwidth]
     return result
