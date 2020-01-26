@@ -347,4 +347,8 @@ input[type="radio"] {
   .item-sold-out-badge:after {
     margin-left: 2px;
   }
+
+  .button {
+    font-size: 11px;
+  }
 }
