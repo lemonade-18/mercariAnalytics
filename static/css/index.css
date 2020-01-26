@@ -136,10 +136,6 @@ form.form1 {
   opacity: 1;
 }
 
-input[type="checkbox"] {}
-
-input[type="checkbox"]:checked {}
-
 .submit {
   cursor: pointer;
   font-family: inherit;
