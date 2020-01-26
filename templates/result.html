@@ -7,7 +7,7 @@
 <link href="/static/css/result.css" media="screen" rel="stylesheet" />
 <!-- navbar -->
 <nav class="navbar navbar-default">
-  <a href="/"><img alt="logo" class="logo" src="\static\picture\logo.png" /></a>
+  <a href="/"><img alt="logo" id="logo" class="logo" src="\static\picture\logo.png" /></a>
 </nav>
 <!--コンテナ -->
 <div class="container">
@@ -131,10 +131,6 @@
         }
         //初期表示
         document.addEventListener('DOMContentLoaded', display({{popular_price_index|safe}}));
-        //切替
-        document.getElementById("text-button").onclick = function () {
-          document.getElementById("text").innerHTML = "クリックされた！";
-        };
       </script>
       <!-- 価格の表示形式を設定するスクリプト -->
       <script>
@@ -149,6 +145,12 @@
             $(this).html(addFigure($(this).html()))
           })
         })
+      </script>
+      <!-- ロゴ画像を遅れて表示するためのスクリプト -->
+      <script>
+        window.onload = function() {
+          $('#logo').fadeIn(0); 
+        }
       </script>
       {% endblock %}
     </div>
