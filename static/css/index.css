@@ -110,11 +110,11 @@ form.form1 {
 
 #checkbox-area {
   width: 76%;
-  margin: 0px auto 28px;
+  margin: 10px auto 22px;
 }
 
 .checkbox-area-title {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 #display-switch {
@@ -129,6 +129,7 @@ form.form1 {
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
+  margin-top: 2px;
 }
 
 #display-switch:checked+#conditionlist-wrap {
