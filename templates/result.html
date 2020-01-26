@@ -130,11 +130,7 @@
           }
         }
         //初期表示
-        document.addEventListener('DOMContentLoaded', display({
-          {
-            popular_price_index | safe
-          }
-        }));
+        document.addEventListener('DOMContentLoaded', display({{popular_price_index | safe}}));
         //切替
         document.getElementById("text-button").onclick = function () {
           document.getElementById("text").innerHTML = "クリックされた！";
