@@ -16,7 +16,7 @@
     直近{{ sold_itemlist|length }}件の売り切れ商品から
   </p>
   {% else %}
-  <p class="container-notes">{{ sold_itemlist|length }}件の売り切れ商品</p>
+  <p class="container-notes">{{ sold_itemlist|length }}件の売り切れ商品から</p>
   {% endif %}
   <p class="container-title">
     <strong>{{ keyword }}</strong>の分析結果</p>
@@ -130,7 +130,11 @@
           }
         }
         //初期表示
-        document.addEventListener('DOMContentLoaded', display({{popular_price_index | safe}}));
+        document.addEventListener('DOMContentLoaded', display({
+          {
+            popular_price_index | safe
+          }
+        }));
         //切替
         document.getElementById("text-button").onclick = function () {
           document.getElementById("text").innerHTML = "クリックされた！";
