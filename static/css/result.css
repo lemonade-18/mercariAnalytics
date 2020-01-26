@@ -72,6 +72,7 @@ body {
   text-align: center;
   color: #ffffff;
   font-size: 18px;
+  margin: 0 0 4px;
 }
 
 /*colの左右余白*/
@@ -193,8 +194,12 @@ body {
 
 /* ボタンのデザイン
 ------------------------------------ */
+.button-row {
+  margin-right: -2px;
+  margin-left: -2px;
+}
+
 .button {
-  padding: 2px 5px;
   position: relative;
   background-color: #1abc9c;
   border-radius: 4px;
@@ -205,11 +210,17 @@ body {
   text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
   text-decoration: none;
   cursor: pointer;
+  width: 100%;
+  text-align: center;
+  padding: 3px 0px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .button:hover {
-  background-color: #31c8aa;
-  box-shadow: 0 3px 0 #23a188;
+  background-color: #208571;
+  box-shadow: 0 3px 0 #165f51;
   text-decoration: none;
 }
 
@@ -219,11 +230,20 @@ body {
   text-decoration: none;
 }
 
+.price-button {
+  width: 100%;
+}
+
+.button-col {
+  padding-right: 2px;
+  padding-left: 2px;
+}
+
 /* Tab Area
 ------------------------------------ */
 
 .tab_wrap {
-  margin: 10px auto;
+  margin: 4px auto;
 }
 
 input[type="radio"] {

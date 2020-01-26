@@ -30,9 +30,13 @@
     </p>
   </div>
   <div class="price-button">
-    {% for label in labels %}
-    <label class="button" onclick='display({{loop.index0}})'><span class="price">{{ label }}</span></label>
-    {% endfor %}
+    <div class="button-row row">
+      {% for label in labels %}
+      <div class="button-col col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+        <label class="button" onclick='display({{loop.index0}})'><span class="price">{{ label }}</span></label>
+      </div>
+      {% endfor %}
+    </div>
   </div>
   <div class="tab_wrap">
     <input checked id="tab1" name="tab_btn" type="radio" />
@@ -116,7 +120,7 @@
               for (var cnt = 0; cnt < hiddenLabels.length; cnt++) {
                 hiddenLabels[cnt].style.display = "none";
               }
-            }else{
+            } else {
               var displayLabel = "graph-label-" + index;
               displayLabels = document.getElementsByClassName(displayLabel)
               for (var cnt = 0; cnt < displayLabels.length; cnt++) {
@@ -126,7 +130,11 @@
           }
         }
         //初期表示
-        document.addEventListener('DOMContentLoaded', display({{popular_price_index|safe}}));
+        document.addEventListener('DOMContentLoaded', display({
+          {
+            popular_price_index | safe
+          }
+        }));
         //切替
         document.getElementById("text-button").onclick = function () {
           document.getElementById("text").innerHTML = "クリックされた！";
