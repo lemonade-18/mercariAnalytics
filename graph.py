@@ -7,8 +7,6 @@ def graphdata(list):
     # データの数
     price_num = len(prices)
     # データの標準偏差を算出
-    if price_num == 1:
-        prices.append(0)
     price_sd = stdev(prices)
 
     # Scottの公式
@@ -99,7 +97,7 @@ def graphdata(list):
     suggested_max = int((max(data8)/10 + 1)) * 10
 
     # 刻み幅の設定
-    step_size = suggested_max / (suggested_max / 10)
+    step_size = suggested_max / (suggested_max / 20)
 
     result = [data_text, labels_text, suggested_max,
               step_size, data8, labels8, binwidth]
