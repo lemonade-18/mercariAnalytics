@@ -57,8 +57,8 @@ def graphdata(list):
             index_a = 0
             index_b = 7
         else:
-            index_a = data_max_index - 4
-            index_b = data_max_index + 3
+            index_a = data_max_index - 3
+            index_b = data_max_index + 4
     else:
         index_b = data_len-1
     print("index_a: ", index_a)
