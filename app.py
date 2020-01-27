@@ -113,5 +113,4 @@ def error_handler(ex):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=80, threaded=True,
-            ssl_context=('../openssl/server.crt', '../openssl/server.key'))
+    app.run(debug=True, host="0.0.0.0", port=80, threaded=True)
