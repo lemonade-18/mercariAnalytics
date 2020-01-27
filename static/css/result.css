@@ -277,13 +277,14 @@ input[type="radio"] {
   background: #fff;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  margin-bottom: 60px;
+  min-height: 200px;
 }
 
 .tab_panel {
   width: 100%;
   padding: 4px 0;
   display: none;
-  margin-bottom: 60px;
 }
 
 .tab_panel p {
