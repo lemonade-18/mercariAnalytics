@@ -54,7 +54,6 @@ def search():
                                            category_child, category_grand_child, item_condition, 1, 1)
     # 販売中の商品の取得
     unsold_itemlist = scraping.mercariSearch(keyword, category_root,
-
                                              category_child, category_grand_child, item_condition, 0, 1)
     # 該当商品の存在チェック
     if sold_itemlist is None:
@@ -65,16 +64,19 @@ def search():
 
     # 取得内容の並び替え
     sold_itemlist = sorted(sold_itemlist, key=lambda x: x[1])
-    unsold_itemlist = sorted(unsold_itemlist, key=lambda x: x[1])
+
+    if unsold_itemlist is None:
+        unsold_itemlist = []
+        unsold_itemlist.append(["", 0, "", "", ""])
 
     # 取得内容確認
-    print("------------------------------------------------------------------")
-    print("sold_itemlist件数: ", len(sold_itemlist))
-    print(*sold_itemlist, sep='\n')
-    print("------------------------------------------------------------------")
-    print("unsold_itemlist件数: ", len(unsold_itemlist))
-    print(*unsold_itemlist, sep='\n')
-    print("------------------------------------------------------------------")
+    # print("------------------------------------------------------------------")
+    # print("sold_itemlist件数: ", len(sold_itemlist))
+    # print(*sold_itemlist, sep='\n')
+    # print("------------------------------------------------------------------")
+    # print("unsold_itemlist件数: ", len(unsold_itemlist))
+    # print(*unsold_itemlist, sep='\n')
+    # print("------------------------------------------------------------------")
 
     # graph.pyを呼び出し及び戻り値の受け取り
     graph_data = graph.graphdata(sold_itemlist)
