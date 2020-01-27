@@ -62,6 +62,10 @@ def graphdata(list):
     print("index_a: ", index_a)
     print("index_b: ", index_b)
 
+    # 切り出し終わりをさらに狭める
+    while data[index_b] == 0:
+        index_b -= 1
+
     # 切り出し
     labels8 = []
     data8 = []
