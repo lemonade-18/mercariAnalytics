@@ -46,7 +46,7 @@
       <label class="tab1_label" for="tab1">相場を調べる</label>
       <label class="tab2_label" for="tab2">買い物をする</label>
     </div>
-    <div class="panel_area">
+    <div class="panel_area" id="panel_area">
       <div class="tab_panel" id="panel1">
         <!--売り切れ商品リスト-->
         <div class="resul-list">
@@ -151,6 +151,10 @@
         window.onload = function () {
           $('#logo').fadeIn(0);
         }
+      </script>
+      <script>
+        var h = $('#panel_area').height()
+        $('#panel_area').css("min-height", h)
       </script>
       {% endblock %}
     </div>
