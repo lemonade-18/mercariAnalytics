@@ -1,17 +1,18 @@
 # mercariAnarytics
 
 メルカリ価格分析 web サービス
+http://mercari-analytics.com
 
 mercariAnarytics</br>
 │ app.py ← サーバープログラム（最初に呼び出されるもの）</br>
 │ scraping.py ← メルカリから情報を拾ってくるプログラム</br>
-| graph.py ← グラフの構成要素を作成するプログラム（まさ担当）</br>
+| graph.py ← グラフの構成要素を作成するプログラム</br>
 │</br>
 ├─static</br>
 │ ├─css</br>
-│ │ bootstrap.css ← いい感じの css が詰まったファイル（詳しくは調べてみて）</br>
-│ │ index.css ← トップページ用の css</br>
-│ │ result.css ←△ 結果画面用の css</br>
+│ │ bootstrap.css
+│ │ index.css ← トップページ用 css</br>
+│ │ result.css ←△ 結果画面用 css</br>
 │ │</br>
 │ ├─js</br>
 │ │ bootstrap.js ← いい感じの jquery が詰まったファイル</br>
