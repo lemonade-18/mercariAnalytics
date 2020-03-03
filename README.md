@@ -1,6 +1,6 @@
 # mercariAnarytics
 
-メルカリ価格分析 web サービス
+メルカリ価格分析 web サービス</br>
 http://mercari-analytics.com
 
 mercariAnarytics</br>
